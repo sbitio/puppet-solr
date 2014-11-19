@@ -5,8 +5,8 @@ class solr::params (
   case $application_server_class {
     tomcat : {
       require ::tomcat
-      $user   = ::tomcat::user
-      $group  = ::tomcat::group
+      $user   = $::tomcat::user
+      $group  = $::tomcat::group
       $notify = Class["::tomcat::service"]    
     }
     default : {
