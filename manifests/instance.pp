@@ -14,7 +14,7 @@ define solr::instance (
         #TODO# find a prettier solution
         $source_conf = "${::solr::dest_dir}/${name}/example"
         exec { "copy-solr-example-to-${directory}":
-          cmd     => "cp -ar ${source_conf} ${directory}",
+          command => "cp -ar ${source_conf} ${directory}",
           creates => $directory,
         }
       }
