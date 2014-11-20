@@ -30,7 +30,7 @@ define solr::version (
       present => directory,
       default => absent,
     },
-    source   => $config,
+    source   => $example,
     recurse => true,
     owner    => $::solr::user,
     group    => $::solr::group,
