@@ -1,10 +1,12 @@
 define solr::version (
-  $war,
-  $ensure   = present,
-  $example  = undef,
-  $lib      = undef,
+  $ensure = present,
 ) {
   require solr
+
+  #TODO# validate 
+  $war     = $::solr::available_versions[$name][war]
+  $example = $::solr::available_versions[$name][example]
+  $lib     = $::solr::available_versions[$name][lib]
 
   file { "${::solr::dest_dir}/${name}/solr.war" :
     ensure => $ensure,

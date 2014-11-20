@@ -10,7 +10,7 @@ class solr::params (
       $notify = Class["::tomcat::service"]    
     }
     default : {
-      fail("Unsupported application_server_class '${application_server_class}'")
+      warning("Unsupported application_server_class '${application_server_class}'")
     }
   }
 }
