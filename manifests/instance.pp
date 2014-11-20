@@ -28,6 +28,9 @@ define solr::instance (
 
   case $::solr::application_server_class {
     tomcat : {
+      #TODO# find a prettier solution
+      $docbase = "${::solr::dest_dir}/${version}/solr.war"
+      $lib     = "${::solr::dest_dir}/${version}/lib"
       ::tomcat::context { $name:
         ensure  => $ensure,
         content => template('solr/tomcat.erb'),
