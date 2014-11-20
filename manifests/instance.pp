@@ -9,7 +9,7 @@ define solr::instance (
 
   case $ensure {
     present : {
-      ensure_resource(::solr::version, $version)
+      ensure_resource(solr::version, $version)
       if $initialize {
         #TODO# find a prettier solution
         $source_conf = "${::solr::dest_dir}/${name}/example"
