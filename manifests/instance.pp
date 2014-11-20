@@ -12,7 +12,7 @@ define solr::instance (
       ensure_resource(solr::version, $version)
       if $initialize {
         #TODO# find a prettier solution
-        $source_conf = "${::solr::dest_dir}/${name}/example"
+        $source_conf = "${::solr::dest_dir}/${version}/example"
         exec { "copy-solr-example-to-${directory}":
           command => "cp -ar ${source_conf} ${directory}",
           creates => $directory,
