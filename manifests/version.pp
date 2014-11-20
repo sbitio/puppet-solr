@@ -8,6 +8,15 @@ define solr::version (
   $example = $::solr::available_versions[$name][example]
   $lib     = $::solr::available_versions[$name][lib]
 
+  file { "${::solr::dest_dir}/${name}" :
+    ensure   => $ensure ? {
+      present => directory,
+      default => absent,
+    },
+    owner    => $::solr::user,
+    group    => $::solr::group,
+    mode     => 0644,
+  }
   file { "${::solr::dest_dir}/${name}/solr.war" :
     ensure => $ensure,
     source => $war,
