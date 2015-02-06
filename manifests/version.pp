@@ -36,16 +36,18 @@ define solr::version (
     group    => $::solr::group,
     mode     => 0644,
   }
-  file { "${::solr::dest_dir}/${name}/lib" :
-    ensure   => $ensure ? {
-      present => directory,
-      default => absent,
-    },
-    source   => $lib,
-    recurse => true,
-    owner    => $::solr::user,
-    group    => $::solr::group,
-    mode     => 0644,
-    notify   => $::solr::notify,
+  if $lib != '' {
+    file { "${::solr::dest_dir}/${name}/lib" :
+      ensure   => $ensure ? {
+        present => directory,
+        default => absent,
+      },
+      source   => $lib,
+      recurse => true,
+      owner    => $::solr::user,
+      group    => $::solr::group,
+      mode     => 0644,
+      notify   => $::solr::notify,
+    }
   }
 }
