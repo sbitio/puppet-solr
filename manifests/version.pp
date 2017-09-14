@@ -15,14 +15,14 @@ define solr::version (
     },
     owner    => $::solr::user,
     group    => $::solr::group,
-    mode     => 0644,
+    mode     => '0644',
   }
   file { "${::solr::dest_dir}/${name}/solr.war" :
     ensure => $ensure,
     source => $war,
     owner  => $::solr::user,
     group  => $::solr::group,
-    mode   => 0644,
+    mode   => '0644',
     notify => $::solr::notify,
   }
   file { "${::solr::dest_dir}/${name}/example" :
@@ -34,7 +34,7 @@ define solr::version (
     recurse => true,
     owner    => $::solr::user,
     group    => $::solr::group,
-    mode     => 0644,
+    mode     => '0644',
   }
   if $lib != '' {
     file { "${::solr::dest_dir}/${name}/lib" :
@@ -46,7 +46,7 @@ define solr::version (
       recurse => true,
       owner    => $::solr::user,
       group    => $::solr::group,
-      mode     => 0644,
+      mode     => '0644',
       notify   => $::solr::notify,
     }
   }

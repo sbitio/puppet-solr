@@ -14,6 +14,6 @@ class solr (
     purge  => true,
     owner  => $::solr::user,
     group  => $::solr::group,
-    mode   => 0644,
+    mode   => '0644',
   }
 }
